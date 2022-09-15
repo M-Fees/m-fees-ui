@@ -3,6 +3,8 @@ import photo from "../Login/image/avatar1.png"
 import {Button} from "../Button/Button";
 import Modal from "../Modal/Modal";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 export function Info(props:any) {
     const navigate = useNavigate()
@@ -13,9 +15,23 @@ export function Info(props:any) {
     function cancel() {
         navigate("/home")
     }
+
+    function sendSMS() {
+        const promise = axios.get("http://localhost:8080/sms")
+        promise.then((res)=>{
+            toast.success(res.data);
+        })
+        .catch((err)=>{
+            toast.error("Not implemented");
+        })
+    }
     
     return(
         <>
+            <ToastContainer
+            position="top-center"
+            closeButton={true}
+            />
             {show && <Modal show={show} closeModalHandler={closeModalHandler} id={id} success={success} error={error} />}
             <div className="container my-5">
                 <div className="m-auto w-50 text-center">
@@ -39,7 +55,7 @@ export function Info(props:any) {
                         ))
                     }
                     <Button title="NEW FEE" attribut="btn btn-success" closeInfo={openModalHandler}/>
-                    <Button title="SEND EMAIL" attribut="btn btn-info mx-3" closeInfo={undefined}/>
+                    <Button title="SEND SMS" attribut="btn btn-info mx-3" closeInfo={sendSMS}/>
                     <Button title="BACK" attribut="btn btn-danger" closeInfo={cancel}/>
                 </div>
             </div>

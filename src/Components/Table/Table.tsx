@@ -3,7 +3,6 @@ import "../../Style/bootstrap/bootstrap.css"
 import {Pagination} from "../Pagination/Pagination";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import {data} from "../../Mock/data";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -39,7 +38,6 @@ export const Table: React.FC<any> = (props) => {
         })
             .catch((err) => {
                 console.log(err)
-                setStudents(data)
             })
     })
 

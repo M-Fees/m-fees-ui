@@ -16,7 +16,8 @@ export function Historic() {
             console.log(res);
             setPayment(res.data)
         }).catch((err:any)=>{
-            alert(err)
+            console.log(err);
+            
         });
     })
     return(

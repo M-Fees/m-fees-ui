@@ -7,6 +7,7 @@ import "../../Style/bootstrap/bootstrap.css"
 import axios from "axios";
 import logo from "../Menu/image/logo.png";
 import {Footer} from "../Footer/Footer";
+import { toast, ToastContainer } from "react-toastify";
 
 
 export const Dashboard: React.FC<any> = () => {
@@ -22,6 +23,10 @@ export const Dashboard: React.FC<any> = () => {
     })
     return (
         <>
+             <ToastContainer
+            position="top-center"
+            closeButton={true}
+            />
             <Menu item="Dashboard"/>
             <div className="container d-flex justify-content-between my-5">
                 <Card title="Grade & Fees" attribut="container card text-center w-25 shadow my-3 py-3">
@@ -32,7 +37,7 @@ export const Dashboard: React.FC<any> = () => {
                             </ul>
                         ))
                     }
-                    <button className="btn btn-danger text-light">change</button>
+                    <button onClick={()=>toast.error("Not implemented")} className="btn btn-danger text-light">change</button>
                 </Card>
                 <Card title="Haute Ecole d'Informatique"
                       attribut="container text-warning card text-center w-25 shadow my-3 py-3">
